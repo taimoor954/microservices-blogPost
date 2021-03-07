@@ -5,8 +5,17 @@ const cors = require('cors');
 const axios = require('axios');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+app.use(
+  express.json({
+    limit: '10kb', //size of req.body can be upto 10kb
+  })
+); //BODY PARSER
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: '10kb',
+  })
+);app.use(cors());
 
 const commentsByPostId = {};
 
@@ -20,7 +29,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
   const comments = commentsByPostId[req.params.id] || [];
 
-  comments.push({ id: commentId, content });
+  comments.push({ id: commentId, content , status : 'pending'});
 
   commentsByPostId[req.params.id] = comments;
 
@@ -29,13 +38,14 @@ app.post('/posts/:id/comments', async (req, res) => {
     data: {
       id: commentId,
       content,
-      postId: req.params.id
+      postId: req.params.id,
+      status : 'pending'
     }
   });
 
   res.status(201).send(comments);
 });
-
+ 
 app.post('/events', (req, res) => {
   console.log('Event Received:', req.body.type);
 

@@ -3,7 +3,17 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(
+  express.json({
+    limit: '10kb', //size of req.body can be upto 10kb
+  })
+); //BODY PARSER
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: '10kb',
+  })
+);
 app.use(cors());
 
 const posts = {};
@@ -22,13 +32,12 @@ app.post('/events', (req, res) => {
   }
 
   if (type === 'CommentCreated') {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
 
     const post = posts[postId];
-    post.comments.push({ id, content });
+    post.comments.push({ id, content, status });
   }
 
-  console.log(posts);
 
   res.send({});
 });
