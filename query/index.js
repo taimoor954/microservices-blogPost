@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const axios = require("axios");
 
 const app = express();
 app.use(
@@ -19,13 +19,7 @@ app.use(cors());
 
 const posts = {};
 
-app.get("/posts", (req, res) => {
-  res.send(posts);
-});
-
-app.post("/events", (req, res) => {
-  const { type, data } = req.body;
-
+const eventsHandler = (type, data) => {
   if (type === "PostCreated") {
     const { id, title } = data;
 
@@ -50,10 +44,30 @@ app.post("/events", (req, res) => {
     comment.status = status;
     comment.content = content;
   }
+};
+
+app.get("/posts", (req, res) => {
+  res.send(posts);
+});
+
+app.post("/events", (req, res) => {
+  const { type, data } = req.body;
 
   res.send({});
 });
 
-app.listen(4002, () => {
+//incase if query is not working for some time, we store all the events in an array inside events>index
+//and just when query start listening at port 4002 we request by using get method on http://localhost:4005/events
+// then send each event in eventHandler function
+
+app.listen(4002, async () => {
   console.log("Listening on 4002");
+  const response = await axios.get("http://localhost:4005/events");
+  console.log(response.data )
+  for (let event of response.data) {
+    console.log(`Processing Event : ${event.type}`);
+    const { type, data } = event;
+    console.log(type)
+    eventsHandler(type, data);
+  }
 });
