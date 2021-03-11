@@ -52,6 +52,7 @@ app.get("/posts", (req, res) => {
 
 app.post("/events", (req, res) => {
   const { type, data } = req.body;
+  eventsHandler(type, data);
 
   res.send({});
 });
@@ -63,11 +64,11 @@ app.post("/events", (req, res) => {
 app.listen(4002, async () => {
   console.log("Listening on 4002");
   const response = await axios.get("http://localhost:4005/events");
-  console.log(response.data )
+  console.log(response.data);
   for (let event of response.data) {
     console.log(`Processing Event : ${event.type}`);
     const { type, data } = event;
-    console.log(type)
+    console.log(type);
     eventsHandler(type, data);
   }
 });
