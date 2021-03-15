@@ -50,5 +50,6 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(4000, () => {
+  console.log('some recent changes made');
   console.log("Listening on 4000");
 });
