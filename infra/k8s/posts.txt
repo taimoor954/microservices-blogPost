@@ -1,3 +1,4 @@
+#ERASE THIS LINE AND CHNAGE THE EXTENSIO TO YAML
 apiVersion: v1
 kind: Pod
 metadata:
