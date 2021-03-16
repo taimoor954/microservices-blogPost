@@ -1,0 +1,6 @@
+Now to communicate post pod with event bus pod you have to create a deployment first for event bus then
+a pod for event bus
+now 2 pods are created to make them communicate we use service specficaly for this scenario we 
+use clusted id service
+
+cannot communicate 2 pods directly because pods ko ports randomly assigne hotay hen
