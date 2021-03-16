@@ -4,3 +4,8 @@ now 2 pods are created to make them communicate we use service specficaly for th
 use clusted id service
 
 cannot communicate 2 pods directly because pods ko ports randomly assigne hotay hen
+
+
+there are 2 ways of attaching service with deployment, one step is to write service attaching code inside
+deployment config file in my case it is (post-depl.yaml or event-bus-depl.yaml) or create seperate file for attaching service with 
+deployment object
