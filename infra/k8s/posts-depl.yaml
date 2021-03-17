@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion : apps/v1
 kind: Deployment
 metadata:
   name: posts-depl
@@ -7,26 +7,11 @@ spec:
   selector:
     matchLabels:
       app: posts
-  template:
+  template: 
     metadata:
       labels:
         app: posts
     spec:
       containers:
-        - name: posts
-          image: fb-posts:latest
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: post-clusterip-srv
-spec:
-  selector:
-    app: posts
-  type: ClusterIP
-  ports:
-    - name: posts
-      protocol: TCP
-      port: 4000
-      targetPort: 4000 
-      
+       - name: posts
+         image: taimoor954/posts

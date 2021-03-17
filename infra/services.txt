@@ -6,6 +6,15 @@ use clusted id service
 cannot communicate 2 pods directly because pods ko ports randomly assigne hotay hen
 
 
-there are 2 ways of attaching service with deployment, one step is to write service attaching code inside
-deployment config file in my case it is (post-depl.yaml or event-bus-depl.yaml) or create seperate file for attaching service with 
-deployment object
+there are 2 ways of attaching service with deployment, one step is to write service config code inside
+deployment config file in my case it is (post-depl.yaml or event-bus-depl.yaml) 
+2nd step is to create seperate file for attaching service config code (like i did in posts-srv.config)
+with deployment object always remember this service config code will be written after below "---" check
+file posts-depl.yaml or event-bus.yaml
+
+service config code may ager service type mention nahi kartay tou by default wo cluster iP service he banata hai
+
+ deployment or service kay  metadata may donu kay name diffrent must hai
+
+ name should be diffrent ager ek deployment ki ek say ziada service ban rahi hen tou wanra k8 saamajta hai
+ ek he service ko doosri service bnaya jara hai like nodePort may metadata>name diffrent hai donu service mau

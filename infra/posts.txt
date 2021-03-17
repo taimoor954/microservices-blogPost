@@ -1,9 +1,0 @@
-#ERASE THIS LINE AND CHNAGE THE EXTENSIO TO YAML
-apiVersion: v1
-kind: Pod
-metadata:
-  name: posts
-spec:
-  containers:
-    - name: posts
-      image: fb/posts:0.0.1

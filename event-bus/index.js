@@ -21,10 +21,10 @@ const events = [];
 app.post("/events", (req, res) => {
   const event = req.body;
   events.push(event);
-  axios.post("http://localhost:4000/events", event); //posts
-  axios.post("http://localhost:4001/events", event); //comments
-  axios.post("http://localhost:4002/events", event); //query
-  axios.post("http://localhost:4006/events", event); //moderation
+  axios.post("http://post-clusterip-srv:4000/events", event); //posts
+  // axios.post("http://localhost:4001/events", event); //comments
+  // axios.post("http://localhost:4002/events", event); //query
+  // axios.post("http://localhost:4006/events", event); //moderation
 
   res.send({ status: "OK" });
 });
