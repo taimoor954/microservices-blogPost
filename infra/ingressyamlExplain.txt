@@ -1,0 +1,11 @@
+annonation will tell the ingress controller that we are about to feed some routing rules to it x`
+
+path means ager /posts kay path per koi request aie tou send it to posts ka cluster Ip service
+
+we can hosts many diffrent apps at many diffrent domains inside one cluster  tabhi host array hai
+
+jitni bhi apps ek clustrer may hosy ho unsab ka domain tou ek he hoga inside local machine and that will be
+localhost
+so hum c>windows>system32<drivers>etc>hosts may jaingay and posts ko as localhost use karayengay
+ab jab bhi posts.com/posts search karo gay tou wo as a localhost he behave karay ga
+behind the scene wo apko posts ka GET return karay ha
