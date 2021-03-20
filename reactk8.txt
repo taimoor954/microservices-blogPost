@@ -40,3 +40,10 @@ React app ko sirf itna paata hai kay ek route per request deni hai
 lbs ye decide karay ga konsa pod ye request jani hai acc to route 
 lbs is not doing full thing for us. yaha Ingress ata hai. ingress ek pod hai that has set of routing
 rules inside of it and ye pod lbs kay sath sath kaam karayga 
+
+start from vid 36
+networking.k8s.io/v1
+
+
+
+networking.k8s.io/v1beta1 //OLD VERSION

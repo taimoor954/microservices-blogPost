@@ -30,7 +30,7 @@ app.post("/events", (req, res) => {
 });
 
 app.get("/events", (request, response) => {
-  console.log(events);
+  console.log(events); 
   response.status(200).send(events);
 });
 
